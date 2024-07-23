@@ -354,7 +354,11 @@ of comment objects.
 let idx = null
 
 // Complete the exercise in the space below:
-
+comments.findIndex((eachComment) => {
+    if (eachComment.id === 123523) {
+        idx = comments.indexOf(eachComment)
+    }
+})
 
 
 // Check your work:
