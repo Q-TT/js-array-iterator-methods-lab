@@ -27,11 +27,11 @@ const people = [
     'Blake, William'
   ];
 
-const travelMethods = [
+  const travelMethods = [
     'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van',
     'bike', 'walk', 'car', 'van', 'car', 'truck'
   ];
-
+  
 const devs = [
     { name: 'Alex', year: 1988 },
     { name: 'Dani', year: 1986 },
