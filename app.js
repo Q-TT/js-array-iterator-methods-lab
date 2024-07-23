@@ -330,7 +330,11 @@ a specific ID 823423 from an array of comment objects.
 let commentById = {}
 
 // Complete the exercise in the space below:
-
+comments.find((eachComment) => {
+    if (eachComment.id === 823423) {
+        commentById = eachComment
+    }
+})
 
 
 // Check your work:
