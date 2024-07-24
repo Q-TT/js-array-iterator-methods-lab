@@ -63,9 +63,12 @@ born in the 1500's.
 let veryOldInventors = []
 
 // Complete the exercise in the space below:
-inventors.filter((eachInventor) => {
+veryOldInventors = inventors.filter((eachInventor) => {
     if (eachInventor.year > 1500 && eachInventor.year < 1599) {
-        veryOldInventors.push (eachInventor)
+        // veryOldInventors.push (eachInventor)
+        return true
+    } else {
+      return false
     }
 })
 
@@ -106,9 +109,21 @@ Hint: Return a new object literal from the callback that looks like:
 let inventorNames = []
 
 // Complete the exercise in the space below:
-inventors.map((eachInventor) => {
-    inventorNames.push({first: eachInventor.first, last: eachInventor.last})
+//* my hacy way:
+// inventors.map((eachInventor) => {
+//     inventorNames.push({first: eachInventor.first, last: eachInventor.last})
+// })
+
+//* the proper way:
+inventorNames = inventors.map ((element, index, arr) => {
+  let newInventor = {
+    first: element.first, 
+    last: element.last
+  }
+  return newInventor
 })
+//! .map() will return all elemnts with modification
+//! .filter() will only include the element that meets certain condition, excluse the emelents that are falsy
 
 
 // Check your work:
@@ -183,11 +198,16 @@ from an array of inventor objects
 let inventorNamedAda = {}
 
 // Complete the exercise in the space below:
-inventors.find((eachInventor) => {
-    if (eachInventor.first.includes("Ada")) {
-        inventorNamedAda = eachInventor
-    }
-})
+//* my hacky way
+// inventors.find((eachInventor) => {
+//     if (eachInventor.first.includes("Ada")) {
+//         inventorNamedAda = eachInventor
+//     }
+// })
+
+//* "proper" way, by the documentation
+inventorNamedAda = inventors.find((inventor) => inventor.first.includes("Ada"))
+//! .find() return the first elemnet that meets certain condition
 
 
 // Check your work:
@@ -213,9 +233,10 @@ Hint: Use the String.prototype.split() method to separate the first and last
 let firstLast = []
 
 // Complete the exercise in the space below:
-people.map((name) => {
+firstLast = people.map((name) => {
     let newName = name.split(",").reverse().join(" ")
-    firstLast.push(newName)
+    // firstLast.push(newName)
+    return newName
 })
 //? if I don't have let newName it won't work ,why???
 
@@ -330,11 +351,17 @@ a specific ID 823423 from an array of comment objects.
 let commentById = {}
 
 // Complete the exercise in the space below:
-comments.find((eachComment) => {
-    if (eachComment.id === 823423) {
-        commentById = eachComment
-    }
-})
+//* hacy way:
+// comments.find((eachComment) => {
+//     if (eachComment.id === 823423) {
+//         commentById = eachComment
+//     }
+// })
+
+//* more proper way:
+commentById = comments.find ((eachComment) => 
+  eachComment.id === 823423
+)
 
 
 // Check your work:
@@ -354,11 +381,15 @@ of comment objects.
 let idx = null
 
 // Complete the exercise in the space below:
-comments.findIndex((eachComment) => {
-    if (eachComment.id === 123523) {
-        idx = comments.indexOf(eachComment)
-    }
-})
+// comments.findIndex((eachComment) => {
+//     if (eachComment.id === 123523) {
+//         idx = comments.indexOf(eachComment)
+//     }
+// })
+
+idx = comments.findIndex ((eachComment) => 
+  eachComment.id === 123523
+)
 
 
 // Check your work:
@@ -391,8 +422,8 @@ Hints:
 
 // let totalYearsLived = 0
 // Complete the exercise in the space below:
-let innitialValue = 0
-let totalYearsLived = inventors.reduce((accumulator, currentValue) => accumulator + (currentValue.passed - currentValue.year), innitialValue
+let initialValue = 0
+let totalYearsLived = inventors.reduce((accumulator, currentValue) => accumulator + (currentValue.passed - currentValue.year), initialValue
 )
 //! I figured it out but not sure how, LOL
 
@@ -421,8 +452,19 @@ Hints:
 */
 
 let travelMethodCounts = {}
+let initialValue_1 = {}
 
 // Complete the exercise in the space below:
+travelMethodCounts = travelMethods.reduce((accumulator, currentValue) => {
+  if (currentValue in accumulator) {
+    accumulator[currentValue] += 1
+  } else {
+    accumulator[currentValue] =1
+  }
+
+  return accumulator
+  
+}, initialValue_1)
 
 
 
